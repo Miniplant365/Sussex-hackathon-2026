@@ -1,0 +1,218 @@
+Scene("water 3", LoadSceneMode.Additive); 
+       SceneManager.UnloadSceneAsync("water 2"); 
+   } using System.Collections;  
+
+using UnityEngine;  
+
+using UnityEngine.SceneManagement; 
+
+public class GameControl : MonoBehaviour {  
+
+public int energy;  
+
+public int purity;  
+
+public int algaePrice;  
+
+public int kelpPrice;  
+
+public int codPrice;  
+
+public int lilypadPrice;  
+
+public int frogPrice;  
+
+public int troutPrice;  
+
+public int treePrice;  
+
+public int algaecount;  
+
+public int kelpcount;  
+
+public int codcount;  
+
+public int lilypadcount;  
+
+public int frogcount;  
+
+public int troutcount;  
+
+public int treecount;  
+
+public GameObject buyalgae;  
+
+// Start is called once before the first execution of Update after the MonoBehaviour is created  
+
+void Start() {  
+
+energy = 100000; 
+
+ purity = 0;  
+
+algaePrice = 5;  
+
+kelpPrice = 50;  
+
+codPrice = 250;  
+
+lilypadPrice = 250;  
+
+frogPrice = 1000;  
+
+troutPrice = 2500;  
+
+treePrice = 5000;  
+
+algaecount = 0;  
+
+kelpcount = 0;  
+
+codcount = 0;  
+
+lilypadcount = 0;  
+
+frogcount = 0;  
+
+troutcount = 0;  
+
+treecount = 0;  
+
+addMoney();  
+
+reducepurity();  
+
+SceneManager.LoadScene("starting out", LoadSceneMode.Additive); } 
+
+// Update is called once per frame 
+void Update() 
+{ 
+   purity = 2 * algaecount + 4 * kelpcount + 7 * lilypadcount + 10 * frogcount + 13 * troutcount + 20 * treecount; 
+} 
+public void scenechange() 
+{ 
+   if (purity >= 20 && purity <50) 
+   { 
+       SceneManager.UnloadSceneAsync("starting out"); 
+       SceneManager.LoadScene("water 2", LoadSceneMode.Additive); 
+   } 
+   if (purity >= 50 && purity<100) 
+   { 
+       SceneManager.Load 
+   if (purity >= 100 && purity < 250) 
+   { 
+       SceneManager.LoadScene("water 4", LoadSceneMode.Additive); 
+       SceneManager.UnloadSceneAsync("water 3"); 
+   } 
+   if (purity >= 250 && purity < 500) 
+   { 
+       SceneManager.LoadScene("water 5", LoadSceneMode.Additive); 
+       SceneManager.UnloadSceneAsync("water 4"); 
+   } 
+} 
+ 
+public void OnAlgaeButtonClick() 
+{ 
+   if(energy >= algaePrice) 
+   { 
+       energy = energy - algaePrice; 
+       algaePrice = (int)(algaePrice * 1.5); 
+       algaecount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnKelpButtonClick() 
+{ 
+   if(energy >= kelpPrice) 
+   { 
+       energy = energy - kelpPrice; 
+       kelpPrice = (int)(kelpPrice * 1.5); 
+       kelpcount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnCodButtonClick() 
+{ 
+   if (energy >= codPrice) 
+   { 
+       energy = energy - codPrice; 
+       codPrice = (int)(codPrice * 1.5); 
+       codcount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnLilypadButtonClick() 
+{ 
+   if (energy >= lilypadPrice) 
+   { 
+       energy = energy - lilypadPrice; 
+       lilypadPrice = (int)(lilypadPrice * 1.5); 
+       lilypadcount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnFrogButtonClick() 
+{ 
+   if (energy >= frogPrice) 
+   { 
+       energy = energy - frogPrice; 
+       frogPrice = (int)(frogPrice * 1.5); 
+       frogcount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnTroutButtonClick() 
+{ 
+   if (energy >= troutPrice) 
+   { 
+       energy = energy - troutPrice; 
+       troutPrice = (int)(troutPrice * 1.5); 
+       troutcount += 1; 
+       scenechange(); 
+   } 
+} 
+ 
+public void OnTreeButtonClick() 
+{ 
+   if (energy >= treePrice) 
+   { 
+       energy = energy - treePrice; 
+       treePrice = (int)(treePrice * 1.5); 
+       treecount += 1; 
+       scenechange(); 
+   } 
+} 
+public void addMoney() 
+{ 
+   energy += (1 * algaecount + 4 * kelpcount + 10 * codcount + 7 * lilypadcount + 20 * frogcount + 40 * troutcount + 40 * treecount); 
+   StartCoroutine(wait()); 
+} 
+private IEnumerator wait() 
+{ 
+   yield return new WaitForSeconds(1f); 
+   addMoney(); 
+} 
+public void reducepurity() 
+{ 
+   if (purity>=2) 
+   { 
+       purity = purity - 2; 
+       scenechange(); 
+   } 
+   StartCoroutine(wait2()); 
+} 
+private IEnumerator wait2() 
+{ 
+   yield return new WaitForSeconds(5f); 
+   reducepurity(); 
+} 
+ 
+
+} 
+
+ 
