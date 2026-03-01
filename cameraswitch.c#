@@ -1,0 +1,32 @@
+public class camMov2 : MonoBehaviour
+{
+    public CinemachineCamera cineCam2;
+
+    public bool cameraMod2;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        cameraMod2 = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void camMod2()
+    {
+        if (cameraMod2)
+        {
+            cameraMod2 = false;
+            cineCam2.enabled = false;
+        }
+        else
+        {
+            cameraMod2 = true;
+            cineCam2.enabled = true;
+        }
+    }
+}
