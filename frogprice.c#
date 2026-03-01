@@ -1,0 +1,19 @@
+using TMPro;
+using UnityEngine;
+
+public class frogPriceScript : MonoBehaviour
+{
+    public GameControl gameControl;
+    public TMP_Text frogGuiPrice;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Update();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        frogGuiPrice.text = gameControl.frogPrice.ToString();
+    }
+}
