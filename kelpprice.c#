@@ -1,0 +1,20 @@
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class kelpPriceScript : MonoBehaviour
+{
+    public GameControl gameControl;
+    public TMP_Text kelpGuiPrice;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Update();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        kelpGuiPrice.text = gameControl.kelpPrice.ToString();
+    }
+}
